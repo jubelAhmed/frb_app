@@ -7,6 +7,10 @@
     <title>Auth</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
     <!-- firebase setup -->
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 
@@ -33,63 +37,74 @@
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+            <li class="nav-item active after-login" id="home" >
+              <a class="nav-link text-info "  href="#">Home <span class="sr-only"></span></a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li> -->
-            <!-- <li class="nav-item">
-              <a class="nav-link "  data-toggle="modal" data-target="#loginModal" href="">Login</a>
-            </li> -->
+            <li class="nav-item after-login">
+              <span class="nav-link text-info " id='user-name' href="">user-email</span>
+            </li>
+            <li class="nav-item after-login" id="sign-out" >
+              <button class="btn-danger" onclick="toggleSignIn()" >Sign Out</button>
+            </li>
             <li class="nav-item">
-              <a class="nav-link " href="{% url 'login' %}">Login</a>
+              <a class="nav-link text-info" id='signin' data-toggle="modal" data-target="#loginModal" href="">Sign In</a>
             </li>
+           
           </ul>
           
         </div>
       </nav>
 
       <!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <form action="/postsign/" method="POST">
-              {% csrf_token %}
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Login with email</h5>
+              <button type="button" onclick="clearModal()" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="loginModal" >
+              <form class="form-inline" onsubmit="return false">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="form-group mb-2">
+                      <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email">
+                      &nbsp;&nbsp;&nbsp;
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <button type="button" class="btn btn-info mb-2" data-dismiss="modal" id="quickstart-sign-in" name="signin">Sign In </button>
+                  </div>
+                </div>
                 
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              
-              <button type="submit" class="btn btn-info">Login</button> 
-            </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-       
+              </form>
+              <p class="text-danger" id="login_message" hidden > message </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" onclick="clearModal()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             
+            </div>
+            
+          </div>
+        </div>
       </div>
       
-    </div>
-  </div>
-</div>
 
       {% block content %}
       {% endblock content %}
 
   
   
+    <script>
+      function clearModal(){
+        document.getElementById('email').value = '';
+        document.getElementById('login_message').innerText = '';
+        document.getElementById('login_message').hidden = true;
+
+      }
+    </script>
     
 
 
@@ -99,7 +114,7 @@
 
     <script src="{% static 'js/firebase.js' %}"></script>
     <script src="{% static 'js/login.js' %} "></script>
-    <script src="{% static 'js/test.js' %} "></script>
+    <script src="{% static 'js/email_link_login.js' %} "></script>
 
 </body>
 </html>
