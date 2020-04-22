@@ -17,9 +17,10 @@
         },
         // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
         signInFlow: 'popup',
-        signInSuccessUrl: './',
+        signInSuccessUrl: '../welcome',
         signInOptions: [{
             provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            signInMethod: firebase.auth.EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD,
            
         }],
         // Terms of service url.
@@ -27,16 +28,16 @@
         // Privacy policy url.
         privacyPolicyUrl: '../welcome'
     };
-    // // Is there an email link sign-in?
-    // if (ui.isPendingRedirect()) {
-    //     console.log('pending')
-    //     ui.start('#firebaseui-auth-container', uiConfig);
-    // }
-    // // This can also be done via:
-    // if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
-    //     console.log('sign in')
-    //     ui.start('#firebaseui-auth-container', uiConfig);
-    // }
+    // Is there an email link sign-in?
+    if (ui.isPendingRedirect()) {
+        console.log('pending')
+        ui.start('#firebaseui-auth-container', uiConfig);
+    }
+    // This can also be done via:
+    if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
+        console.log('sign in')
+        ui.start('#firebaseui-auth-container', uiConfig);
+    }
     // The start method will wait until the DOM is loaded.
-    ui.start('#firebaseui-auth-container', uiConfig);
+    // ui.start('#firebaseui-auth-container', uiConfig);
 })();
