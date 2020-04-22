@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn frbauth.wsgi --access-logfile -
+web: gunicorn frb_auth.wsgi --log-file -
