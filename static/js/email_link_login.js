@@ -3,7 +3,7 @@
   */
  function toggleSignIn() {
      // Disable the sign-in button during async sign-in tasks.
-     document.getElementById('quickstart-sign-in').disabled = true;
+    //  document.getElementById('quickstart-sign-in').disabled = true;
 
      if (firebase.auth().currentUser) {
          // [START signout]
@@ -37,7 +37,7 @@
             //  alert('An email was sent to ' + email + '. Please use the link in the email to sign-in.');
              // [START_EXCLUDE]
              // Re-enable the sign-in button.
-             document.getElementById('quickstart-sign-in').disabled = false;
+            //  document.getElementById('quickstart-sign-in').disabled = false;
              // [END_EXCLUDE]
          }).catch(function (error) {
              // Handle Errors here.
@@ -59,7 +59,7 @@
      alert('Error: ' + error.message);
      console.log(error);
      // Re-enable the sign-in button.
-     document.getElementById('quickstart-sign-in').disabled = false;
+    //  document.getElementById('quickstart-sign-in').disabled = false;
  }
 
  /**
@@ -70,7 +70,7 @@
      if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
          // [START_EXCLUDE]
          // Disable the sign-in button during async sign-in tasks.
-         document.getElementById('quickstart-sign-in').disabled = true;
+        //  document.getElementById('quickstart-sign-in').disabled = true;
          // [END_EXCLUDE]
 
          // You can also get the other parameters passed in the query string such as state=STATE.
@@ -117,10 +117,7 @@
  function initApp() {
      // Restore the previously used value of the email.
      var email = window.localStorage.getItem('emailForSignIn');
-     if (!email) {
-         console.log('not email')
-     }
-     console.log(email)
+     
      document.getElementById('email').value = email;
 
      // Automatically signs the user-in using the link.
@@ -159,13 +156,13 @@
              document.getElementById('user-name').hidden = true;
              document.getElementById('home').hidden = true;
              document.getElementById('sign-out').hidden = true;
-             document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
-             document.getElementById('quickstart-sign-in').textContent = 'Sign In';
-             document.getElementById('quickstart-account-details').textContent = 'null';
+            //  document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
+            //  document.getElementById('quickstart-sign-in').textContent = 'Sign In';
+            //  document.getElementById('quickstart-account-details').textContent = 'null';
              // [END_EXCLUDE]
          }
          // [START_EXCLUDE silent]
-         document.getElementById('quickstart-sign-in').disabled = false;
+        //  document.getElementById('quickstart-sign-in').disabled = false;
          // [END_EXCLUDE]
      });
      // [END authstatelistener]

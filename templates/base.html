@@ -37,17 +37,17 @@
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item active after-login" id="home" >
-              <a class="nav-link text-info "  href="#">Home <span class="sr-only"></span></a>
+            <li class="nav-item active after-login" id="home" hidden >
+              <a class="nav-link text-info "  href="#"  >Home <span class="sr-only"></span></a>
             </li>
             <li class="nav-item after-login">
-              <span class="nav-link text-info " id='user-name' href="">user-email</span>
+              <span class="nav-link text-info " id='user-name' hidden href="">user-email</span>
             </li>
-            <li class="nav-item after-login" id="sign-out" >
-              <button class="btn-danger" onclick="toggleSignIn()" >Sign Out</button>
+            <li class="nav-item after-login" id="sign-out" hidden>
+              <a class="nav-link text-danger" href="./" onclick="toggleSignIn()" >Sign Out</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-info" id='signin' data-toggle="modal" data-target="#loginModal" href="">Sign In</a>
+              <a class="nav-link text-info"  id='signin' data-toggle="modal" data-target="#loginModal" hidden href="">Sign In</a>
             </li>
            
           </ul>
@@ -90,9 +90,9 @@
           </div>
         </div>
       </div>
-      
-
+    
       {% block content %}
+     
       {% endblock content %}
 
   
